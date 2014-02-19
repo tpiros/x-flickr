@@ -8,7 +8,7 @@ To see this demo in action please register for a <a href="http://www.flickr.com/
 Add the custom <code>&lt;x-flickr></code> tag to your HTML page (along with the necessary Polymer libraries). You have access to the following options:
 
 <ul>
-  <li><strong>apikey</strong>: your API key can be specified as an attribute as well - e.g. &lt;x-flickr apikey="yourkey">&lt;/x-flickr></li>
-  <li><strong>tag</strong>: tag to search for - e.g. &lt;x-flickr tag="rome">&lt;/x-flickr></li>
-  <li><strong>amount</strong>: number of photos to be returned - e.g. &lt;x-flickr amount=15>&lt;/x-flickr></li>
+  <li><strong>apikey</strong>: your API key can be specified as an attribute as well - e.g. <code>&lt;x-flickr apikey="yourkey">&lt;/x-flickr></code></li>
+  <li><strong>tag</strong>: tag to search for - e.g. <code>&lt;x-flickr tag="rome">&lt;/x-flickr></code></li>
+  <li><strong>amount</strong>: number of photos to be returned - e.g. <code>&lt;x-flickr amount=15>&lt;/x-flickr></code></li>
 </ul>
