@@ -1,5 +1,5 @@
 <link rel="import" href="../components/polymer-jsonp/polymer-jsonp.html">
-<polymer-element name="x-flickr" attributes="apikey tag perpage">
+<polymer-element name="x-flickr" attributes="apikey tag amount">
     <template>
         <style>
             * {
@@ -26,7 +26,7 @@
             }
         </style>
 
-        <polymer-jsonp id="ajax" auto url="http://api.flickr.com/services/rest/?method=flickr.photos.search&api_key={{apikey}}&tags={{tag}}&per_page={{perpage}}&page=1&format=json&jsoncallback="></polymer-jsonp>
+        <polymer-jsonp id="ajax" auto url="http://api.flickr.com/services/rest/?method=flickr.photos.search&api_key={{apikey}}&tags={{tag}}&per_page={{amount}}&page=1&format=json&jsoncallback="></polymer-jsonp>
         <div class="container">
             <p>Photos of <strong>{{tag}}</strong> -- showing {{perpage}} results</p>
             <template  id="photos" repeat="{{photo in photos}}">
@@ -38,7 +38,7 @@
     </template>
     <script>
         Polymer('x-flickr', {
-            perpage: 10,
+            amount: 10,
             photos: [],
             apikey: '',
             ready: function () {
