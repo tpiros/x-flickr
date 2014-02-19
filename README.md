@@ -4,6 +4,9 @@ Inspired by <a href="https://github.com/addyosmani/x-instagram/" target="_blank"
 
 To see this demo in action please register for a <a href="http://www.flickr.com/services/apps/create/apply/" target="_blank">Flickr API key</a>. Once done, update <code>src/x-flickr.html</code> file with the right API key (<a href="https://github.com/tamaspiros/x-flickr/blob/master/src/x-flickr.html#L43">line 43</a>).
 
+## Installation
+Simply execute <code>bower install</code> from the project folder
+
 ## Usage
 Add the custom <code>&lt;x-flickr></code> tag to your HTML page (along with the necessary Polymer libraries). You have access to the following options:
 
