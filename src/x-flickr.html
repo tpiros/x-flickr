@@ -28,7 +28,7 @@
 
         <polymer-jsonp id="ajax" auto url="http://api.flickr.com/services/rest/?method=flickr.photos.search&api_key={{apikey}}&tags={{tag}}&per_page={{amount}}&page=1&format=json&jsoncallback="></polymer-jsonp>
         <div class="container">
-            <p>Photos of <strong>{{tag}}</strong> -- showing {{perpage}} results</p>
+            <p>Photos of <strong>{{tag}}</strong> -- showing {{amount}} results</p>
             <template  id="photos" repeat="{{photo in photos}}">
                 <div class="thumbnail">
                     <img src="http://farm{{photo.farm}}.staticflickr.com/{{photo.server}}/{{photo.id}}_{{photo.secret}}.jpg" class="img-thumbnail">
