@@ -4,7 +4,7 @@
   "authors": [
     "Tamas Piros <me@tamas.io>"
   ],
-  "description": "Custom element for returning photos from Flickr",
+  "description": "Custom Polymer element for Flickr",
   "main": "index.html",
   "license": "free",
   "homepage": "http://tamas.io/",
