@@ -15,3 +15,6 @@ Add the custom <code>&lt;x-flickr></code> tag to your HTML page (along with the 
   <li><strong>tag</strong>: tag to search for - e.g. <code>&lt;x-flickr tag="rome">&lt;/x-flickr></code></li>
   <li><strong>amount</strong>: number of photos to be returned - e.g. <code>&lt;x-flickr amount=15>&lt;/x-flickr></code></li>
 </ul>
+
+## More info
+<a href="http://tamas.io/x-flickr-custom-polymer-element/">http://tamas.io/x-flickr-custom-polymer-element/</a>
