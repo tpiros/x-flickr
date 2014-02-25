@@ -1,4 +1,4 @@
-<link rel="import" href="../components/polymer-ajax/polymer-ajax.html">
+<link rel="import" href="../components/polymer-jsonp/polymer-jsonp.html">
 <polymer-element name="x-flickr" attributes="apikey tag amount">
     <template>
         <style>
@@ -6,7 +6,7 @@
                 box-sizing: border-box;    
             }
             div {
-                display: block;
+                /*display: block;*/
             }
             .thumbnail {
                 margin: 5px;
@@ -26,26 +26,50 @@
             }
         </style>
 
-        <polymer-ajax auto handleAs="json" response="{{data}}" url="http://api.flickr.com/services/rest/?method=flickr.photos.search&api_key={{apikey}}&tags={{tag}}&per_page={{amount}}&page=1&format=json&nojsoncallback=1"></polymer-ajax>
+        <polymer-jsonp id="ajax" auto url="http://api.flickr.com/services/rest/?method=flickr.photos.search&api_key={{apikey}}&tags={{tag}}&per_page={{amount}}&page=1&format=json&jsoncallback=" response="{{response}}"></polymer-jsonp>
         <div class="container">
-            <p>Photos of <strong>{{tag}}</strong> -- showing {{amount}} results</p>
+            <p hidden?="{{photos.length}}">Loading photos...</p>
+            <p hidden?="{{!photos.length}}">Photos of <strong>{{tag}}</strong> -- showing {{amount}} results</p>
             <template  id="photos" repeat="{{photo in photos}}">
                 <div class="thumbnail">
-                    <img src="http://farm{{photo.farm}}.staticflickr.com/{{photo.server}}/{{photo.id}}_{{photo.secret}}.jpg" class="img-thumbnail">
-                    <p>Photo by {{photo.info.photo.owner.realname}}</p>
+                    <img src="{{photo.src}}" class="img-thumbnail">
+                    <p>Photo by {{photo.author}}</p>
                 </div>
-                <polymer-ajax auto handleAs="json" response="{{photo.info}}" url="http://api.flickr.com/services/rest/?method=flickr.photos.getInfo&api_key={{apikey}}&photo_id={{photo.id}}&format=json&nojsoncallback=1"></polymer-ajax>
             </template>
         </div>
     </template>
     <script>
         Polymer('x-flickr', {
-            apikey: '',
             amount: 10,
-            data: null,
-            dataChanged: function() {
-                this.photos = this.data.photos.photo;
-                this.fire('x-flickr-load', {response: this.photos})
+            apikey: '',
+            response: null,
+            created: function() {
+                this.photos = [];
+            },
+            responseChanged: function() {
+              this.photos = this.response.photos.photo;
+              
+              this.photos.forEach(function(photo, i) {
+                photo.src = 'http://farm' + photo.farm +
+                            '.staticflickr.com/' + photo.server +
+                            '/' + photo.id + '_' + photo.secret + '.jpg';
+                photo.author = 'Loading author...';
+
+                this.fetchDescription(photo);
+              }.bind(this));
+              
+              this.fire('x-flickr-load', {response: this.response});
+            },
+            fetchDescription: function(photo) {
+              var jsonp = document.createElement('polymer-jsonp');
+              jsonp.url = 'https://api.flickr.com/services/rest/' + 
+                          '?method=flickr.photos.getInfo&api_key=' +
+                          this.apikey + '&photo_id=' + photo.id +
+                          '&format=json&jsoncallback=';
+              jsonp.addEventListener('polymer-response', function(e) {
+                photo.author = this.response.photo.owner.realname;
+              });
+              jsonp.go();
             }
         });
     </script>
