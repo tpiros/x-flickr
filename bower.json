@@ -5,6 +5,7 @@
     "Tamas Piros <me@tamas.io>"
   ],
   "description": "Custom Polymer element for Flickr",
+  "keywords": "web-components",
   "main": "index.html",
   "license": "free",
   "homepage": "http://tamas.io/",
