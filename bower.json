@@ -6,8 +6,7 @@
   ],
   "description": "Custom Polymer element for Flickr",
   "keywords": "web-components",
-  "main": "index.html",
-  "license": "free",
+  "private": true,
   "homepage": "http://tamas.io/",
   "ignore": [
     "**/.*",
@@ -18,8 +17,7 @@
     "tests"
   ],
   "dependencies": {
-    "platform": "Polymer/platform#~0.2.0",
-    "polymer-jsonp": "Polymer/polymer-jsonp#~0.2.0",
-    "polymer": "Polymer/polymer#~0.2.0"
+    "polymer": "Polymer/polymer#master",
+    "polymer-jsonp": "Polymer/polymer-jsonp#master"
   }
 }
